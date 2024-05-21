@@ -50,25 +50,30 @@ function argParser() {
     const fileExtension = path.extname(filePath);
     switch (fileExtension) {
         case '.json':
+            console.log("I assume you formatted your json file as '{devicename: uuid}'...");
             parseJson(filePath);
             break;
         
         case '.txt':
             console.log("I assume you formatted your text file as 'devicename uuid'...");
+            parseTxt(filePath);
             break;
         
         case '.csv':
             console.log("I assume you formatted your csv file as 'devicename,uuid'...");
+            parseCsv(filePath);
             break;
         
         default:
-            console.log("Unsupported file type!");
+            console.log("Unsupported file type! Try a .json, .txt, or .csv file. Or just leave I guess. I'm not your mom.");
     }
 }
 
 // FILE PARSERS
 function parseJson(filePath) {
-    console.log("will impl json l8r");
+    const data = fs.readFileSync(filePath, 'utf8');
+    const devices = JSON.parse(data);
+    console.log(devices);
 }
 
 function parseTxt(filePath) {
@@ -88,6 +93,8 @@ function readBluetoothDevicesTxt(filePath) {}
 
 function readBluetoothDevicesCsv(filePath) {}
 
-// 
+
+
+// MAIN
 
 main();
