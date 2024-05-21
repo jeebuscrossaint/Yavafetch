@@ -1,0 +1,93 @@
+// New LINENNENE
+
+const readline = require('readline');
+const path = require('path');
+const fs = require('fs');
+
+function main() {
+    prompt();
+}
+
+// PROMPTTTTTTT
+
+function prompt() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.question("Are you sure you want to run this script? This script may break laws in your area. Especially if you are in an airport. (y/n)", function(inputDecision) {
+        if (inputDecision.toLowerCase() === 'y') {
+            rl.question("Are you really sure? (y/n)", function(secondInputDecision) {
+                if (secondInputDecision.toLowerCase() === 'y') {
+                    console.log("Damn, you really wanna break the law.");
+                } else {
+                    console.log("Good choice. Stay safe!");
+                }
+                rl.close();
+            });
+        } else {
+            console.log("Good choice. Stay safe!");
+            rl.close();
+        }
+    });
+}
+
+// CHAR ARGC CHAR ARGV IS BETTER
+
+function argParser() {
+    const filePath = process.argv[2];
+    if (!filePath) {
+        console.log("Give me a file/path!")
+        return;
+    }
+
+    if (!fs.existsSync(filePath)) {
+        console.log("File does not exist!");
+        return;
+    }
+
+    const fileExtension = path.extname(filePath);
+    switch (fileExtension) {
+        case '.json':
+            parseJson(filePath);
+            break;
+        
+        case '.txt':
+            console.log("I assume you formatted your text file as 'devicename uuid'...");
+            break;
+        
+        case '.csv':
+            console.log("I assume you formatted your csv file as 'devicename,uuid'...");
+            break;
+        
+        default:
+            console.log("Unsupported file type!");
+    }
+}
+
+// FILE PARSERS
+function parseJson(filePath) {
+    console.log("will impl json l8r");
+}
+
+function parseTxt(filePath) {
+    console.log("will impl txt l8r");
+}
+
+function parseCsv(filePath) {
+    console.log("will impl csv l8r");
+}
+
+
+// READ IN BLUETOOTH DEVICES AND UUIDS
+
+function readBluetoothDevicesJson(filePath) {}
+
+function readBluetoothDevicesTxt(filePath) {}
+
+function readBluetoothDevicesCsv(filePath) {}
+
+// 
+
+main();
