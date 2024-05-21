@@ -21,6 +21,7 @@ function prompt() {
             rl.question("Are you really sure? (y/n)", function(secondInputDecision) {
                 if (secondInputDecision.toLowerCase() === 'y') {
                     console.log("Damn, you really wanna break the law.");
+                    argParser();
                 } else {
                     console.log("Good choice. Stay safe!");
                 }
@@ -73,8 +74,13 @@ function argParser() {
 function parseJson(filePath) {
     const data = fs.readFileSync(filePath, 'utf8');
     const devices = JSON.parse(data);
-    console.log(devices);
-}
+    devices.forEach(devices => {
+        console.log(devices.name);
+        console.log(devices.address);
+        console.log(devices.uuid);
+        console.log('');
+        });
+    };
 
 function parseTxt(filePath) {
     console.log("will impl txt l8r");

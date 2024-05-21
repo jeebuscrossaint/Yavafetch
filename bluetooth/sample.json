@@ -2,25 +2,11 @@
     {
         "name": "Device 1",
         "address": "00:11:22:33:44:55",
-        "uuid": "123e4567-e89b-12d3-a456-426614174000",
-        "connected": true,
-        "services": [
-            {
-                "uuid": "0000180d-0000-1000-8000-00805f9b34fb",
-                "characteristics": [
-                    {
-                        "uuid": "00002a37-0000-1000-8000-00805f9b34fb",
-                        "properties": ["read", "notify"]
-                    }
-                ]
-            }
-        ]
+        "uuid": "123e4567-e89b-12d3-a456-426614174000"
     },
     {
         "name": "Device 2",
         "address": "66:77:88:99:AA:BB",
-        "uuid": "123e4567-e89b-12d3-a456-426614174000",
-        "connected": false,
-        "services": []
+        "uuid": "123e4567-e89b-12d3-a456-426614174001"
     }
 ]
