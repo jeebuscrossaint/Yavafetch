@@ -51,7 +51,7 @@ function argParser() {
     const fileExtension = path.extname(filePath);
     switch (fileExtension) {
         case '.json':
-            console.log("I assume you formatted your json file as '{devicename: uuid}'...");
+            console.log("I assume you formatted your json file as `name: 'devicename', address: 'deviceaddress', uuid: 'deviceuuid'`");
             parseJson(filePath);
             break;
         
@@ -83,7 +83,17 @@ function parseJson(filePath) {
     };
 
 function parseTxt(filePath) {
-    console.log("will impl txt l8r");
+    const data = fs.readFileSync(filePath, 'utf8');
+    const lines = data.split('\n');
+    
+    for (let i = 0; i < lines.length; i++) {
+        const [name, addr, uuid] = lines[i].split(' ');
+    
+        console.log(name);
+        console.log(addr);
+        console.log(uuid);
+        console.log('');
+    }
 }
 
 function parseCsv(filePath) {
