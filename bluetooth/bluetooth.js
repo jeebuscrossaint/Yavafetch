@@ -132,6 +132,23 @@ async function readBluetoothDevicesCsv(filePath) {
     console.log("hello csv");
 }
 
+// BEGIN POPULATION
+
+const noble = require('noble');
+
+function populateDevices() {
+    devices.forEach(device => {
+        noble.emit('discover', {
+            advertisement: {
+                localName: device.name,
+                serviceUuids: [device.uuid],
+            },
+            address: device.addr,
+        });
+    });
+}
+
+
 // MAIN
 
 main();
