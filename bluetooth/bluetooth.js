@@ -97,7 +97,19 @@ function parseTxt(filePath) {
 }
 
 function parseCsv(filePath) {
-    console.log("will impl csv l8r");
+    const readInterface = readline.createInterface({
+        input: fs.createReadStream(filePath),
+        output: process.stdout,
+        console: false
+    });
+
+    readInterface.on('line', function(line) {
+        const [name, addr, uuid] = line.split(','); // Split the line into three parts
+        console.log(name);
+        console.log(addr);
+        console.log(uuid);
+        console.log('');
+    });
 }
 
 
