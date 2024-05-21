@@ -52,17 +52,17 @@ function argParser() {
     switch (fileExtension) {
         case '.json':
             console.log("I assume you formatted your json file as `name: 'devicename', address: 'deviceaddress', uuid: 'deviceuuid'`");
-            parseJson(filePath);
+            readBluetoothDevicesJson(filePath);
             break;
         
         case '.txt':
             console.log("I assume you formatted your text file as 'devicename uuid'...");
-            parseTxt(filePath);
+            readBluetoothDevicesTxt(filePath);
             break;
         
         case '.csv':
             console.log("I assume you formatted your csv file as 'devicename,uuid'...");
-            parseCsv(filePath);
+            readBluetoothDevicesCsv(filePath);
             break;
         
         default:
@@ -71,57 +71,66 @@ function argParser() {
 }
 
 // FILE PARSERS
+
+let devices = [];
+
 function parseJson(filePath) {
     const data = fs.readFileSync(filePath, 'utf8');
-    const devices = JSON.parse(data);
-    devices.forEach(devices => {
-        console.log(devices.name);
-        console.log(devices.address);
-        console.log(devices.uuid);
-        console.log('');
-        });
-    };
+    return JSON.parse(data);
+}
 
 function parseTxt(filePath) {
     const data = fs.readFileSync(filePath, 'utf8');
     const lines = data.split('\n');
-    
+    const parsedDevices = [];
+
     for (let i = 0; i < lines.length; i++) {
         const [name, addr, uuid] = lines[i].split(' ');
-    
-        console.log(name);
-        console.log(addr);
-        console.log(uuid);
-        console.log('');
+        parsedDevices.push({ name, addr, uuid });
     }
+
+    return parsedDevices;
 }
 
 function parseCsv(filePath) {
-    const readInterface = readline.createInterface({
-        input: fs.createReadStream(filePath),
-        output: process.stdout,
-        console: false
-    });
+    return new Promise((resolve, reject) => {
+        const readInterface = readline.createInterface({
+            input: fs.createReadStream(filePath),
+            output: process.stdout,
+            console: false
+        });
 
-    readInterface.on('line', function(line) {
-        const [name, addr, uuid] = line.split(','); // Split the line into three parts
-        console.log(name);
-        console.log(addr);
-        console.log(uuid);
-        console.log('');
+        const parsedDevices = [];
+
+        readInterface.on('line', function(line) {
+            const [name, addr, uuid] = line.split(',');
+            parsedDevices.push({ name, addr, uuid });
+        });
+
+        readInterface.on('close', function() {
+            resolve(parsedDevices);
+        });
+
+        readInterface.on('error', function(err) {
+            reject(err);
+        });
     });
 }
 
+function readBluetoothDevicesJson(filePath) {
+    devices = parseJson(filePath);
+    console.log("hello json");
+}
 
-// READ IN BLUETOOTH DEVICES AND UUIDS
+async function readBluetoothDevicesTxt(filePath) {
+    devices = parseTxt(filePath);
+    console.log("hello txt");
+}
 
-function readBluetoothDevicesJson(filePath) {}
-
-function readBluetoothDevicesTxt(filePath) {}
-
-function readBluetoothDevicesCsv(filePath) {}
-
-
+async function readBluetoothDevicesCsv(filePath) {
+    devices = await parseCsv(filePath);
+    console.log("hello csv");
+}
 
 // MAIN
 
