@@ -1,0 +1,25 @@
+{
+  "name": "yavafetch",
+  "version": "1.0.0",
+  "description": "A fetch utility written in JavaScript (YavaSkreept)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeebuscrossaint/Yavafetch.git"
+  },
+  "keywords": [
+    "fetch",
+    "neofetch",
+    "fastfetch",
+    "js-fetch"
+  ],
+  "author": "Amarnath P.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeebuscrossaint/Yavafetch/issues"
+  },
+  "homepage": "https://github.com/jeebuscrossaint/Yavafetch#readme"
+}
