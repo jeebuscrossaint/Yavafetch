@@ -1,10 +1,13 @@
 const { printAsciiArt } = require('../modules/ascii');
 const { printHelp } = require('../modules/help');
 const { nameInfo } = require('../modules/nameInfo');
+const  { osName } = require('../modules/osName');
 
 function defaultInfo() {
     const name = nameInfo();
-    console.log(`${name}`);
+    console.log(`\x1b[1m${name}\x1b[0m`);
+    const os = osName();
+    console.log(`\x1b[1mOS:\x1b[0m ${os}`);
 }
 
 function main() {
@@ -16,6 +19,7 @@ function main() {
         
         case flags.includes('--ascii'):
             printAsciiArt();
+            defaultInfo();
             break;
         default:
             defaultInfo();
