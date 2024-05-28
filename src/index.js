@@ -3,8 +3,10 @@ const { printHelp } = require('../modules/help');
 const { nameInfo } = require('../modules/nameInfo');
 const { osName } = require('../modules/osName');
 const { hostName } = require('../modules/host');
+const { printOsSpecificAsciiArt } = require('../modules/specificAscii');
 
 function defaultInfo() {
+    printOsSpecificAsciiArt();
     const name = nameInfo();
     console.log(`\x1b[1m${name}\x1b[0m`);
     const os = osName();
