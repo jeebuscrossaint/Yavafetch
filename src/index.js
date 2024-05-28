@@ -1,13 +1,16 @@
 const { printAsciiArt } = require('../modules/ascii');
 const { printHelp } = require('../modules/help');
 const { nameInfo } = require('../modules/nameInfo');
-const  { osName } = require('../modules/osName');
+const { osName } = require('../modules/osName');
+const { hostName } = require('../modules/host');
 
 function defaultInfo() {
     const name = nameInfo();
     console.log(`\x1b[1m${name}\x1b[0m`);
     const os = osName();
     console.log(`\x1b[1mOS:\x1b[0m ${os}`);
+    const host = hostName();
+    console.log(`\x1b[1mHost:\x1b[0m ${host}`);
 }
 
 function main() {
