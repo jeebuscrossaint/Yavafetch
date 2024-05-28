@@ -2,9 +2,10 @@
   "name": "yavafetch",
   "version": "1.0.0",
   "description": "A fetch utility written in JavaScript (YavaSkreept)",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "npm run"
+    "test": "npm run",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
