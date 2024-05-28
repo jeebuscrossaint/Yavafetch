@@ -1,27 +1,11 @@
-const hasFlags = require('./flagHandler');
+const { printAsciiArt } = require('../modules/ascii');
+const { printHelp } = require('../modules/help');
+const { nameInfo } = require('../modules/nameInfo');
 
-function printAsciiArt() {
-    console.log(`
-    _____.___.                    _____       __         .__     
-    \\__  |   |____ ___  _______ _/ ____\\_____/  |_  ____ |  |__  
-     /   |   \\__  \\\\  \\/ /\\__  \\\\   __\\/ __ \\   __\\/ ___\\|  |  \\ 
-     \\____   |/ __ \\\\   /  / __ \\|  | \\  ___/|  | \\  \\___|   Y  \\
-     / ______(____  /\\_/  (____  /__|  \\___  >__|  \\___  >___|  /
-     \\/           \\/  
-    `);
+function defaultInfo() {
+    const name = nameInfo();
+    console.log(`${name}`);
 }
-
-function printHelp() {
-    console.log(`
-    Usage: ascii-art [options]
-
-    Options:
-        --help      Print this help message
-        --ascii     Print ascii art
-    `);
-}
-
-
 
 function main() {
     const flags = process.argv.slice(2);
@@ -33,6 +17,8 @@ function main() {
         case flags.includes('--ascii'):
             printAsciiArt();
             break;
+        default:
+            defaultInfo();
 
     }
 }
