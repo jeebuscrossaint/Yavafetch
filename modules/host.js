@@ -1,18 +1,24 @@
 const { execSync } = require('child_process');
-const os = require('os');
 
 function hostName() {
     try {
-        let host;
-        if (os.type() === 'Windows_NT') {
-            host = execSync('wmic computersystem get model', { encoding: 'utf8' });
-        } else {
-            host = execSync('uname -a', { encoding: 'utf8' });
-        }
+        const host = execSync('wmic computersystem get model', { encoding: 'utf8' });
         return host.split('\n')[1].trim();
     } catch (error) {
-        console.error('Failed to get host name:', error);
-        return 'Unknown';
+        console.error('Failed to get host name using WMIC:', error);
+        try {
+            const host = execSync('cat /sys/class/dmi/id/product_name', { encoding: 'utf8' });
+            return host.trim();
+        } catch (error) {
+            console.error('Failed to get host name using cat:', error);
+            try {
+                const host = execSync('sysctl hw.model', { encoding: 'utf8' });
+                return host.split(': ')[1].trim();
+            } catch (error) {
+                console.error('Failed to get host name using sysctl:', error);
+                return 'Unknown';
+            }
+        }
     }
 }
 
