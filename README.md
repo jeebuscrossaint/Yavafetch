@@ -7,10 +7,10 @@ Yavafetch is a simple system information tool written in JavaScript. It is simpl
 ## TODO
 
 package managers (dpkg/apt flatpak homebrew nix pacman portage/emerge snap rpm slackpkg xbps apk-tools freebsdpkg openbsdports pkgsrc-netbsd winget chocalety scoop cygwin)
-cpu info (speed brand cores temp)
-kernel version if linux windows version if windows screw mac
-uptime
-refreshrate
+`DONE: cpu info (speed brand cores temp)`
+`DONE: kernel version if linux windows version if windows screw mac`
+`DONE: uptime`
+refreshrate / display info
 gpu info 
 desktop environment
 gtk

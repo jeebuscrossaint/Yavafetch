@@ -8,6 +8,7 @@ const { arch } = require('../modules/arch');
 const { kernelVersion } = require('../modules/kernel');
 const { getUptime } = require('../modules/uptime');
 const { determineManager } = require('../modules/packageInfo');
+const { cpuInfo } = require('../modules/cpuInfo');
 
 function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -16,7 +17,7 @@ function defaultInfo() {
     const os = osName();
     console.log(`\x1b[1mOS:\x1b[0m ${os}`);
     const host = hostName();
-    console.log(`\x1b[1mHost:\x1b[0m ${host}`);
+    console.log(`\x1b[1mHost:\x1b[0m ${host}`); // note that this right now ABSOLUTELY DOES NOT WORK ON ANY UNIX LIKE SYSTEM LOL gotta fix that soon
     const architecture = arch();
     console.log(`\x1b[1mArchitecture:\x1b[0m ${architecture}`);
     const version = kernelVersion();
@@ -25,6 +26,8 @@ function defaultInfo() {
     console.log(`\x1b[1mUptime:\x1b[0m ${up}`);
     const manager = determineManager();
     console.log(`\x1b[1mPackage Manager:\x1b[0m ${manager}`);
+    const cpu = cpuInfo();
+    console.log(`\x1b[1mCPU:\x1b[0m ${cpu.slice(4)}`);
 }
 
 function main() {
