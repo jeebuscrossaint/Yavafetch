@@ -2,7 +2,7 @@
 
 _____
 
-Yavafetch is a simple system information tool written in JavaScript. It is simply made to learn JavaScript as I wanted a simple project that is also kind of detailed and does not use any external libraries. It is inspired by neofetch/fastfetch/pfetch.
+Yavafetch is a simple system information tool written in JavaScript. It is simply made to learn JavaScript as I wanted a simple project that is also kind of detailed and does not use any external libraries. It is inspired by neofetch/fastfetch/pfetch. It is written with as minimal as possible shellcode so I could truly get the terrible experience of JavaScript. It is also incredibly modular and easy to add new features to.
 
 ## TODO
 

@@ -5,7 +5,9 @@ const { osName } = require('../modules/osName');
 const { hostName } = require('../modules/host');
 const { printOsSpecificAsciiArt } = require('../modules/specificAscii');
 const { arch } = require('../modules/arch');
-const { kernel, kernelVersion } = require('../modules/kernel');
+const { kernelVersion } = require('../modules/kernel');
+const { getUptime } = require('../modules/uptime');
+const { determineManager } = require('../modules/packageInfo');
 
 function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -19,6 +21,10 @@ function defaultInfo() {
     console.log(`\x1b[1mArchitecture:\x1b[0m ${architecture}`);
     const version = kernelVersion();
     console.log(`\x1b[1mKernel Version:\x1b[0m ${version}`);
+    const up = getUptime();
+    console.log(`\x1b[1mUptime:\x1b[0m ${up}`);
+    const manager = determineManager();
+    console.log(`\x1b[1mPackage Manager:\x1b[0m ${manager}`);
 }
 
 function main() {
