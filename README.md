@@ -16,7 +16,7 @@ desktop environment
 gtk
 shell
 disk usage
-ip (local and public if possible)
+`DONE: ip local`
 `DONE: memory info including swap`
 battery info
 audio info

@@ -11,6 +11,7 @@ const { determineManager } = require('../modules/packageInfo');
 const { cpuInfo } = require('../modules/cpuInfo');
 const { memInfo } = require('../modules/memInfo');
 const { swapInfo } = require('../modules/swapInfo');
+const { getLocalIP } = require('../modules/network');
 
 function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -34,6 +35,9 @@ function defaultInfo() {
     console.log(`\x1b[1mMemory:\x1b[0m ${mem}`);
     const swap = swapInfo();
     console.log(`\x1b[1mSwap:\x1b[0m ${swap}`);
+    const ip = getLocalIP();
+    console.log(`\x1b[1mLocal IP:\x1b[0m ${ip}`);
+    
 }
 
 function main() {
