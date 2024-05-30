@@ -17,6 +17,6 @@ gtk
 shell
 disk usage
 ip (local and public if possible)
-memory info including swap
+`DONE: memory info including swap`
 battery info
 audio info
