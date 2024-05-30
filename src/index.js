@@ -9,6 +9,8 @@ const { kernelVersion } = require('../modules/kernel');
 const { getUptime } = require('../modules/uptime');
 const { determineManager } = require('../modules/packageInfo');
 const { cpuInfo } = require('../modules/cpuInfo');
+const { memInfo } = require('../modules/memInfo');
+const { swapInfo } = require('../modules/swapInfo');
 
 function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -25,9 +27,13 @@ function defaultInfo() {
     const up = getUptime();
     console.log(`\x1b[1mUptime:\x1b[0m ${up}`);
     const manager = determineManager();
-    console.log(`\x1b[1mPackage Manager:\x1b[0m ${manager}`);
+    console.log(`\x1b[1mPackage Manager:\x1b[0m ${manager}`); // this only works on windows right now lol gotta as well do UNIX like.
     const cpu = cpuInfo();
     console.log(`\x1b[1mCPU:\x1b[0m ${cpu.slice(4)}`);
+    const mem = memInfo();
+    console.log(`\x1b[1mMemory:\x1b[0m ${mem}`);
+    const swap = swapInfo();
+    console.log(`\x1b[1mSwap:\x1b[0m ${swap}`);
 }
 
 function main() {
