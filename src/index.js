@@ -12,6 +12,10 @@ const { cpuInfo } = require('../modules/cpuInfo');
 const { memInfo } = require('../modules/memInfo');
 const { swapInfo } = require('../modules/swapInfo');
 const { getLocalIP } = require('../modules/network');
+const { getGPUInfo } = require('../modules/gpuInfo');
+const { disk, getDiskInfo } = require('../modules/disk');
+const { getShellInfo } = require('../modules/shell');
+const { getBatteryInfo } = require('../modules/battery');
 
 function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -37,6 +41,9 @@ function defaultInfo() {
     console.log(`\x1b[1mSwap:\x1b[0m ${swap}`);
     const ip = getLocalIP();
     console.log(`\x1b[1mLocal IP:\x1b[0m ${ip}`);
+    const shell = getShellInfo();
+    console.log(`\x1b[1mShell:\x1b[0m ${shell}`);
+    const battery = getBatteryInfo();
     
 }
 

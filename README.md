@@ -14,7 +14,7 @@ refreshrate / display info
 gpu info 
 desktop environment
 gtk
-shell
+`DONE: shell`
 disk usage
 `DONE: ip local`
 `DONE: memory info including swap`
