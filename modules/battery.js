@@ -14,12 +14,16 @@ function getBatteryInfo() {
             const chargeRemaining = parseInt(batteryInfo[1]);
             const batteryStatus = parseInt(batteryInfo[0]);
 
+            let result;
             if (chargeRemaining >= 0 && batteryStatus !== 0) {
                 const status = batteryStatus === 2 ? 'Connected' : 'Disconnected';
-                resolve(`${chargeRemaining}% [${status}]`);
+                result = `${chargeRemaining}% [${status}]`;
             } else {
-                resolve('Battery information not available');
+                result = 'Battery information not available';
             }
+
+            // Check if result is undefined before resolving
+            resolve(result ? result : 'Battery information not available');
         });
     });
 }

@@ -51,7 +51,7 @@ async function defaultInfo() {
     console.log(`${gpu}`);
 }
 
-function main() {
+async function main() {
     const flags = process.argv.slice(2);
     switch (true) {
         case flags.includes('--help'):
@@ -60,11 +60,10 @@ function main() {
         
         case flags.includes('--ascii'):
             printAsciiArt();
-            defaultInfo();
+            await defaultInfo(); // Add await here
             break;
         default:
-            defaultInfo();
-
+            await defaultInfo();
     }
 }
 
