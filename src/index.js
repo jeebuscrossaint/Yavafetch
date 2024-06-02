@@ -13,9 +13,9 @@ const { memInfo } = require('../modules/memInfo');
 const { swapInfo } = require('../modules/swapInfo');
 const { getLocalIP } = require('../modules/network');
 const { getGPUInfo } = require('../modules/gpuInfo');
-const { disk, getDiskInfo } = require('../modules/disk');
 const { getShellInfo } = require('../modules/shell');
 const { getBatteryInfo } = require('../modules/battery');
+const { diskInfo, listDisks } = require('../modules/disk');
 
 async function defaultInfo() {
     printOsSpecificAsciiArt();
@@ -45,6 +45,8 @@ async function defaultInfo() {
     console.log(`\x1b[1mShell:\x1b[0m ${shell}`);
     const battery = await getBatteryInfo();
     console.log(`\x1b[1mBattery:\x1b[0m ${battery}`);
+    const disk = listDisks();
+    console.log(`${disk}`);
 }
 
 function main() {

@@ -15,8 +15,8 @@ gpu info
 desktop environment
 gtk
 `DONE: shell`
-disk usage
+`DONE: disk usage`
 `DONE: ip local`
 `DONE: memory info including swap`
-battery info
+`DONE :battery info`
 audio info

@@ -17,6 +17,8 @@ function getBatteryInfo() {
             if (chargeRemaining >= 0 && batteryStatus !== 0) {
                 const status = batteryStatus === 2 ? 'Connected' : 'Disconnected';
                 resolve(`${chargeRemaining}% [${status}]`);
+            } else {
+                resolve('Battery information not available');
             }
         });
     });
