@@ -17,7 +17,7 @@ const { disk, getDiskInfo } = require('../modules/disk');
 const { getShellInfo } = require('../modules/shell');
 const { getBatteryInfo } = require('../modules/battery');
 
-function defaultInfo() {
+async function defaultInfo() {
     printOsSpecificAsciiArt();
     const name = nameInfo();
     console.log(`\x1b[1m${name}\x1b[0m`);
@@ -43,8 +43,8 @@ function defaultInfo() {
     console.log(`\x1b[1mLocal IP:\x1b[0m ${ip}`);
     const shell = getShellInfo();
     console.log(`\x1b[1mShell:\x1b[0m ${shell}`);
-    const battery = getBatteryInfo();
-    
+    const battery = await getBatteryInfo();
+    console.log(`\x1b[1mBattery:\x1b[0m ${battery}`);
 }
 
 function main() {
