@@ -10,7 +10,6 @@ package managers (dpkg/apt flatpak homebrew nix pacman portage/emerge snap rpm s
 `DONE: cpu info (speed brand cores temp)`
 `DONE: kernel version if linux windows version if windows screw mac`
 `DONE: uptime`
-refreshrate / display info
 `DONE: gpu info`
 `DONE: shell`
 `DONE: disk usage`
