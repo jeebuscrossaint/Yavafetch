@@ -11,7 +11,7 @@ package managers (dpkg/apt flatpak homebrew nix pacman portage/emerge snap rpm s
 `DONE: kernel version if linux windows version if windows screw mac`
 `DONE: uptime`
 refreshrate / display info
-gpu info 
+`DONE: gpu info`
 `DONE: shell`
 `DONE: disk usage`
 `DONE: ip local`
